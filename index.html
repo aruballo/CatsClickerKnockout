@@ -4,10 +4,10 @@
 	</head>
 	<body>
 		<div id="CatView">
-			<h1 id="CatTitle" data-bind="text: catTitle"></h1>
-			<h2 id="CurrentCatLevel" data-bind="text: catLevel"></h2>
-			<img id="CurrentCat" width="200px" height="200px" data-bind="attr: { src: imgSrc }, click: updateClickCount"></img>
-			<p id="clickCount" data-bind="text: clickCount"></p>
+			<h1 id="CatTitle" data-bind="text: catsClickerKnockOut.catObj.catTitle()"></h1>
+			<h2 id="CurrentCatLevel" data-bind="text: catsClickerKnockOut.catObj.catLevel()"></h2>
+			<img id="CurrentCat" width="200px" height="200px" data-bind="attr: { src: catsClickerKnockOut.catObj.imgSrc() }, click: updateClickCount"></img>
+			<p id="clickCount" data-bind="text: catsClickerKnockOut.catObj.clickCount()"></p>
 		</div>
 		<div id="CatNickNameView">
 			<table>
@@ -16,7 +16,7 @@
 						<th>NickName</th>
 					</tr>
 				</thead>
-				<tbody data-bind="foreach: nicknames">
+				<tbody data-bind="foreach: catsClickerKnockOut.catObj.nicknames()">
 					<tr>
 						<td data-bind="text: nickname"></td>
 					</tr>

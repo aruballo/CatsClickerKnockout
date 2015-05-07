@@ -1,6 +1,7 @@
 var catsClickerKnockOut = catsClickerKnockOut || {};
 
-catsClickerKnockOut.viewModel = {
+
+catsClickerKnockOut.catObj = {
 	init: function(){
 		this.clickCount = ko.observable(0);
 		this.imgSrc = ko.observable("img/cat0.jpg");
@@ -11,7 +12,7 @@ catsClickerKnockOut.viewModel = {
 			{nickname: "Chapin"}
 		]);		
 		this.catLevel = ko.computed(function(){
-			clicks = catsClickerKnockOut.viewModel.clickCount();
+			clicks = catsClickerKnockOut.catObj.clickCount();
 			if(clicks > 10 && clicks <= 20){
 				return "Newborn";
 			}
@@ -32,12 +33,17 @@ catsClickerKnockOut.viewModel = {
 			}
 		});
 		
-	},
+	}	
+};
+
+catsClickerKnockOut.viewModel = {
 	updateClickCount: function(){
-		this.clickCount(this.clickCount() + 1);
+		catsClickerKnockOut.catObj.clickCount(catsClickerKnockOut.catObj.clickCount() + 1);
 	}
 };
 
-catsClickerKnockOut.viewModel.init();
+
+
+catsClickerKnockOut.catObj.init();
 
 ko.applyBindings(catsClickerKnockOut.viewModel);
