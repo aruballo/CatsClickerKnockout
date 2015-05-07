@@ -4,14 +4,15 @@
 	</head>
 	<body>
 		<div id="CatView">
-			<h1 id="CurrentCatTitle"></h1>
-			<span id="id" style="visibility: hidden"></span>
-			<img id="CurrentCat" width="200px" height="200px"></img>
-			<p id="clickCount">0</p>
+			<h1 id="CurrentCatTitle" data-bind="text: catTitle"></h1>
+			<img id="CurrentCat" width="200px" height="200px" data-bind="attr: { src: imgSrc }, click: updateClickCount"></img>
+			<p id="clickCount" data-bind="text: clickCount"></p>
 		</div>
 		<div id="CatListView">
 			<table id="catsTable" border="2px">
 			</table>
 		</div>	
 	</body>
+	<script src="js/knockout.js"></script>
+	<script src="js/CatsClicker.js"></script>
 </html>
