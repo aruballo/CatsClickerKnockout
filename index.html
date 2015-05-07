@@ -4,12 +4,23 @@
 	</head>
 	<body>
 		<div id="CatView">
-			<h1 id="CurrentCatTitle" data-bind="text: catTitle"></h1>
+			<h1 id="CatTitle" data-bind="text: catTitle"></h1>
+			<h2 id="CurrentCatLevel" data-bind="text: catLevel"></h2>
 			<img id="CurrentCat" width="200px" height="200px" data-bind="attr: { src: imgSrc }, click: updateClickCount"></img>
 			<p id="clickCount" data-bind="text: clickCount"></p>
 		</div>
-		<div id="CatListView">
-			<table id="catsTable" border="2px">
+		<div id="CatNickNameView">
+			<table>
+				<thead>
+					<tr>
+						<th>NickName</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: nicknames">
+					<tr>
+						<td data-bind="text: nickname"></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>	
 	</body>
