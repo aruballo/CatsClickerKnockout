@@ -10,20 +10,32 @@
 			<img id="CurrentCat" width="200px" height="200px" data-bind="attr: { src: imgSrc }, click: $parent.updateClickCount"></img>
 			<p id="clickCount" data-bind="text: clickCount"></p>
 		</div>
-		<div id="CatNickNameView">
+		<table>
+			<thead>
+				<tr>
+					<th>NickName</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: nicknames">
+				<tr>
+					<td data-bind="text: nickname"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="CatListView" data-bind="with: catsClickerKnockOut.viewModel">
 			<table>
 				<thead>
 					<tr>
-						<th>NickName</th>
+						<th>CatList</th>
 					</tr>
 				</thead>
-				<tbody data-bind="foreach: nicknames">
+				<tbody data-bind="foreach: catList">
 					<tr>
-						<td data-bind="text: nickname"></td>
+						<td data-bind="text: catTitle, click: $parent.changeCat"></td>
 					</tr>
 				</tbody>
 			</table>
-		</div>	
+		</div>
 	</body>
 	<script src="js/knockout.js"></script>
 	<script src="js/CatsClicker.js"></script>
