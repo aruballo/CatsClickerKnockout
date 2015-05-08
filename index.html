@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="UTF-8"></meta>
 	</head>
-	<body data-bind="with: catsClickerKnockOut.catObj">
+	<body data-bind="with: catsClickerKnockOut.viewModel.currentCat()">
 		<div id="CatView">
 			<h1 id="CatTitle" data-bind="text:catTitle"></h1>
 			<h2 id="CurrentCatLevel" data-bind="text: catLevel"></h2>
-			<img id="CurrentCat" width="200px" height="200px" data-bind="attr: { src: imgSrc }, click: $root.updateClickCount"></img>
+			<img id="CurrentCat" width="200px" height="200px" data-bind="attr: { src: imgSrc }, click: $parent.updateClickCount"></img>
 			<p id="clickCount" data-bind="text: clickCount"></p>
 		</div>
 		<div id="CatNickNameView">

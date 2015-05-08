@@ -1,49 +1,50 @@
 var catsClickerKnockOut = catsClickerKnockOut || {};
 
 
-catsClickerKnockOut.catObj = {
-	init: function(){
-		this.clickCount = ko.observable(0);
-		this.imgSrc = ko.observable("img/cat0.jpg");
-		this.catTitle = ko.observable("EL GATO SUPREME");
-		this.nicknames = ko.observableArray([
-			{nickname: "Torta"},
-			{nickname: "Paisa"},
-			{nickname: "Chapin"}
-		]);		
-		this.catLevel = ko.computed(function(){
-			clicks = catsClickerKnockOut.catObj.clickCount();
-			if(clicks > 10 && clicks <= 20){
-				return "Newborn";
-			}
-			else if(clicks > 20 && clicks <= 30){
-				return "Infant";
-			}
-			else if(clicks > 30 && clicks <= 40){
-				return "Toddler";
-			}
-			else if(clicks > 40 && clicks <= 50){
-				return "Child";
-			}
-			else if(clicks > 50){
-				return "Teen";
-			}
-			else{
-				return "Fetus";
-			}
-		});
-		
-	}	
+catsClickerKnockOut.catObj = function(data){
+	this.clickCount = ko.observable(data.clickCount);
+	this.imgSrc = ko.observable(data.imgSrc);
+	this.catTitle = ko.observable(data.catTitle);
+	this.nicknames = ko.observableArray(data.nicknames);		
+	this.catLevel = ko.computed(function(){
+		clicks = this.clickCount();
+		if(clicks > 10 && clicks <= 20){ 
+			return "Newborn";
+		}
+		else if(clicks > 20 && clicks <= 30){
+			return "Infant";
+		}
+		else if(clicks > 30 && clicks <= 40){
+			return "Toddler";
+		}
+		else if(clicks > 40 && clicks <= 50){
+			return "Child";
+		}
+		else if(clicks > 50){
+			return "Teen";
+		}
+		else{
+			return "Fetus";
+		}
+	}, this);	 
 };
 
 catsClickerKnockOut.viewModel = {
+	init: function(){
+		this.currentCat = ko.observable(new catsClickerKnockOut.catObj(
+			{
+				clickCount: 0,
+				imgSrc: "img/cat0.jpg",
+				catTitle: "EL GATO SUPREME",
+				nicknames: [{nickname: "Nacho"}, {nickname: "Gatito"}, {nickname: "Bob"}]
+			}
+		));
+	},
 	updateClickCount: function(){
-		catsClickerKnockOut.catObj.clickCount(catsClickerKnockOut.catObj.clickCount() + 1);
+		this.clickCount(this.clickCount() + 1);
 	}
 };
 
-
-
-catsClickerKnockOut.catObj.init();
+catsClickerKnockOut.viewModel.init();
 
 ko.applyBindings(catsClickerKnockOut.viewModel);
